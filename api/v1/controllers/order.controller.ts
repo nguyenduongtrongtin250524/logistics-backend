@@ -36,7 +36,6 @@ const create = async (req: Request, res: Response) => {
 const track = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-
     const orderExists = await orderService.findById(id);
     if (!orderExists) {
       return res.status(404).json({

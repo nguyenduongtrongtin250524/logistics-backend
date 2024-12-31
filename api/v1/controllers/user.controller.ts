@@ -6,6 +6,7 @@ import userService from "../services/user.service";
 
 import md5Util from "../../../utils/md5.util";
 import jwtUtil from "../../../utils/jwt.util";
+import driverService from "../services/driver.service";
 
 // [POST] /api/v1/users/create
 const register = async (req: Request, res: Response) => {
@@ -17,10 +18,11 @@ const register = async (req: Request, res: Response) => {
     const address = req.body.address;
 
     const userExists = await userService.findByEmail(email);
-    if (userExists) {
+    const driverExists = await driverService.findByEmail(email);
+    if (userExists || driverExists) {
       return res.status(400).json({
         status: false,
-        message: "User email was exists."
+        message: "Email was exists."
       });
     }
 
