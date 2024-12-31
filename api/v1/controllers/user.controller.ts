@@ -113,11 +113,11 @@ const refreshToken = async (req: Request, res: Response) => {
       });
     }
 
-    const accessToken = jwtUtil.generate({code: userId}, "1d");
+    const accessToken = jwtUtil.generate({ code: userId }, "1d");
     return res.status(200).json({
       status: true,
       message: "Refresh token successfully.",
-      accessToken: accessToken
+      data: { accessToken }
     });
   } catch {
     return res.status(500).json({

@@ -16,9 +16,14 @@ const validatePhoneNumber = (phoneNumber: string) => {
   return true;
 }
 
+const validateDate = (date: Date) => {
+  return !isNaN(date.getTime());
+}
+
 const validateHelper = {
   validateEmail,
   validatePassword,
-  validatePhoneNumber
+  validatePhoneNumber,
+  validateDate
 };
 export default validateHelper;
